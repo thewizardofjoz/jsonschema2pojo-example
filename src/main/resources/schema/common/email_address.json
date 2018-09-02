@@ -1,0 +1,7 @@
+{
+    "type": "string",
+    "description": "The email address.",
+    "minLength": 3,
+    "maxLength": 254,
+    "pattern": "^.+@[^\"\\-].+$"
+}

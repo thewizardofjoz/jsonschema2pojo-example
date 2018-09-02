@@ -1,0 +1,48 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Employee",
+  "description": "An Employee",
+  "type": "object",
+  "properties": {
+    "employee-id": {
+      "description": "The unique identifier for an employee",
+      "type": "integer"
+    },
+    "first-name": {
+      "description": "Employee's first name.",
+      "type": "string",
+      "maxLength": 150
+    },
+    "middle-name": {
+      "description": "Employee's middle name.",
+      "type": "string",
+      "maxLength": 100
+    },
+    "last-name": {
+      "description": "Employee's last name.",
+      "type": "string",
+      "maxLength": 150
+    },
+    "gender": {
+      "description": "Employee's gender.",
+      "$ref": "./common/gender.json"
+    },
+    "work-email": {
+      "description": "Employee's work email address.",
+      "$ref": "./common/email_address.json"
+    },
+    "date-of-birth": {
+      "description": "Date of birth of the employee.",
+      "$ref": "./common/date_time.json"
+    }
+  },
+  "required": [
+    "first-name, last-name, date-of-birth"
+  ],
+  "x-links": [
+    {
+      "href": "http://localhost:8080/v1/employees/{employee_id}",
+      "rel": "self"
+    }
+  ]
+}

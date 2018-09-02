@@ -1,0 +1,10 @@
+{
+  "type": "string",
+  "description": "The gender type.",
+  "enum": [
+    "MALE",
+    "FEMALE",
+    "NOT_APPLICABLE",
+    "NOT_KNOWN"
+  ]
+}

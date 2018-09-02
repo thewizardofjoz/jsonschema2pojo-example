@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.example</groupId>
+    <artifactId>jsonschema2pojo-example</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <dependencies>
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.4</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.5.4</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.thewizardofjoz</groupId>
+            <artifactId>jsonschema2pojo-ignoreunknown-annotator</artifactId>
+            <version>0.1-SNAPSHOT</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.jsonschema2pojo</groupId>
+                <artifactId>jsonschema2pojo-maven-plugin</artifactId>
+                <version>0.5.1</version>
+
+                <dependencies>
+                    <dependency>
+                        <groupId>com.github.thewizardofjoz</groupId>
+                        <artifactId>jsonschema2pojo-ignoreunknown-annotator</artifactId>
+                        <version>0.1-SNAPSHOT</version>
+                    </dependency>
+                </dependencies>
+
+                <configuration>
+                    <sourceDirectory>${basedir}/src/main/resources/schema</sourceDirectory>
+                    <targetPackage>com.github.example.types</targetPackage>
+                    <includeJsr303Annotations>true</includeJsr303Annotations>
+                    <removeOldOutput>true</removeOldOutput>
+                    <initializeCollections>false</initializeCollections>
+                    <includeAdditionalProperties>false</includeAdditionalProperties>
+                    <customAnnotator>org.jsonschema2pojo.custom.IgnoreUnknownAnnotator</customAnnotator>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
